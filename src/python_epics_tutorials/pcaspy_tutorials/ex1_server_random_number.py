@@ -7,6 +7,7 @@ pvdb = {
     "RAND": {
         "prec": 3,
         "scan": 1,
+        "count": 10,
     }
 }
 
@@ -15,9 +16,8 @@ class myDriver(Driver):
         super(myDriver, self).__init__()
 
     def read(self, reason):
-        print(reason)
         if reason == "RAND":
-            value = random.random()
+            value = [random.random() for i in range(10)]
         else:
             value = self.getParam(reason)
         print(value)
