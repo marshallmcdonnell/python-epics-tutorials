@@ -1,0 +1,31 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "python-epics-tutorials"
+version = "1.0"
+description = "My work for pcaspy, pyepics, and pvapy tutorials"
+dependencies = [
+    "pyepics",
+    "pcaspy",
+    "pvapy",
+]
+requires-python = "~=3.10"
+
+[project.optional-dependencies]
+dev = [
+  "pytest",
+  "pytest-cov",
+  "ruff",
+]
+
+[tool.ruff]
+line-length = 100
+
+[tool.ruff.lint]
+extend-select = ["E501", "D"]
+ignore = ["D200", "D212"]
+
+[tool.ruff.lint.pydocstyle]
+convention = "numpy"
