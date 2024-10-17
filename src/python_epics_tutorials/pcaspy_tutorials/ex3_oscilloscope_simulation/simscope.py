@@ -51,7 +51,7 @@ class MyDriver(Driver):
         Driver.__init__(self)
         self.eid = threading.Event()
         self.tid = threading.Thread(target=self.run_sim_scope)
-        self.tid.setDaemon(True)
+        self.tid.daemon = True
         self.tid.start()
 
     def write(self, reason, value):
@@ -79,6 +79,7 @@ class MyDriver(Driver):
             else:
                 self.eid.wait()
             run = self.getParam("Run")
+
             if not run:
                 continue
             # retrieve parameters
